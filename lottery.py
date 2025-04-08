@@ -31,14 +31,14 @@ class lotteryDatabase:
 
     def pickPowerball(self):
             
-        tally = self.histPowerballCount
+        tal = self.histPowerballCount
         minPowerball = []
         minPBCount = []
         for index in range(26):       
-            ballCount = min(tally)
+            ballCount = min(tal)
             minPBCount.append(ballCount)
-            minPowerball.append({tally.index(ballCount)+1: ballCount})
-            tally[tally.index(ballCount)] = 1000 #place holder assuming each tally <1000
+            minPowerball.append({tal.index(ballCount)+1: ballCount})
+            tal[tal.index(ballCount)] = 1000 #place holder assuming each tally <1000
         picks = 3
         self.optPowerball = minPowerball[:picks]
         while (len(self.optPowerball) < 27 and minPBCount[picks-1] == minPBCount[picks]):
@@ -47,10 +47,10 @@ class lotteryDatabase:
         return self.optPowerball
 
     def pickDrawing(self):#tally of least 5 picked balls
-        tally = self.histBallCount
+        tal = self.histBallCount
         minDraws = []
         for count in range(69):
-            minTally = min(tally)
+            minTally = min(tal)
             ball = tally.index(minTally)+1 #ball draw corresponding to count
             d=dict()
             d[ball]= minTally
@@ -67,9 +67,9 @@ class lotteryDatabase:
 
 def main():
     print('Your calculation for generating wins is running.')
-    lottery = lotteryDatabase()
-    tally = open('powerball.txt','r')
-    lottery.genHistDraw(tally)
+    lot = lotteryDatabase()
+    tal = open('powerball.txt','r')
+    lot.genHistDraw(tal)
     print ('These are your suggested balls :with tally', lottery.pickDrawing())
     print ('These are your suggested power balls: with tally', lottery.pickPowerball())
     draws = open('tickets.txt','r')
