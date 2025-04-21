@@ -51,12 +51,12 @@ class lotteryDatabase:
         tal = self.histBallCount
         minDraws = []
         for count in range(69):
-            minTally = min(tal)
-            ball = tally.index(minTally)+1 #ball draw corresponding to count
+            minTal = min(tal)
+            ball = tal.index(minTally)+1 #ball draw corresponding to count
             d=dict()
-            d[ball]= minTally
+            d[ball]= minTal
             minDraws.append(d)
-            tally[ball-1]=1000 #place holder for indices for all tallies <1000
+            tal[ball-1]=1000 #place holder for indices for all tallies <1000
         picks = 5
         self.optPool = minDraws[:picks]
         while minDraws[picks][list(minDraws[picks].keys())[0]] == minDraws[picks-1][list(minDraws[picks-1].keys())[0]]:
@@ -71,8 +71,8 @@ def main():
     lot = lotteryDatabase()
     tal = open('powerball.txt','r')
     lot.genHistDraw(tal)
-    print ('These are your suggested balls :with tally', lottery.pickDrawing())
-    print ('These are your suggested power balls: with tally', lottery.pickPowerball())
+    print ('These are your suggested balls :with tally', lot.pickDrawing())
+    print ('These are your suggested power balls: with tally', lot.pickPowerball())
     draws = open('tickets.txt','r')
 '''
 if __name__ == 'main':
