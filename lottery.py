@@ -1,5 +1,6 @@
 # Choose the lottery numbers
 # lottery.py by Ronald Adomako July 7, 2016
+# edited & modified by A. Alan Browning II April 21, 2025
 
 from itertools import combinations #p, r r-length tuples, in sorted order, no repeated elements
 import string
